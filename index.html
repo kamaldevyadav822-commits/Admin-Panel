@@ -5,41 +5,60 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-gradient-to-br from-black via-gray-900 to-black text-white">
 
 <!-- LOGIN -->
 <div id="loginScreen" class="flex items-center justify-center h-screen">
   <div class="w-[90%] max-w-sm p-6 bg-white/10 rounded-xl">
-
-    <h2 class="text-xl mb-4 text-center">Admin Login</h2>
-
-    <input id="email" placeholder="Email"
-      class="w-full mb-3 p-2 bg-white/10 rounded">
-
-    <input id="password" type="password" placeholder="Password"
-      class="w-full mb-3 p-2 bg-white/10 rounded">
-
-    <button onclick="login()"
-      class="w-full bg-blue-500 py-2 rounded">
-      Login
-    </button>
-
+    <input id="email" placeholder="Email" class="w-full mb-3 p-2 bg-white/10 rounded">
+    <input id="password" type="password" placeholder="Password" class="w-full mb-3 p-2 bg-white/10 rounded">
+    <button onclick="login()" class="w-full bg-blue-500 py-2 rounded">Login</button>
   </div>
 </div>
 
-<!-- ADMIN DASHBOARD -->
-<div id="dashboard" class="hidden h-screen flex flex-col">
+<!-- CHAT LIST -->
+<div id="chatList" class="hidden h-screen flex flex-col">
 
   <div class="p-4 border-b border-white/10 flex justify-between">
-    <h2 class="text-lg">Admin Panel</h2>
+    <h2>Chats</h2>
 
-    <button onclick="logout()"
-      class="bg-red-500 px-3 py-1 rounded text-sm">
-      Logout
-    </button>
+    <div id="avatar" class="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer">U</div>
   </div>
 
-  <div id="users" class="flex-1 overflow-y-auto p-3 space-y-3"></div>
+  <div id="usersList" class="flex-1 overflow-y-auto"></div>
+</div>
+
+<!-- CHAT -->
+<div id="chatScreen" class="hidden h-screen flex flex-col">
+
+  <div class="p-4 border-b flex items-center gap-2">
+    <button onclick="goBack()">←</button>
+    <div id="chatHeader"></div>
+    <span id="status" class="text-xs text-green-400"></span>
+  </div>
+
+  <div id="messages" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
+
+  <!-- IMAGE PREVIEW -->
+  <div id="previewBox" class="hidden p-2">
+    <img id="previewImg" class="max-h-40 rounded">
+  </div>
+
+  <!-- INPUT -->
+  <div class="sticky bottom-0 p-3 bg-black/80">
+    <div class="flex gap-2 bg-white/10 rounded-full px-3 py-2">
+
+      <input id="msg" class="flex-1 bg-transparent outline-none">
+
+      <label class="cursor-pointer">
+        📷
+        <input type="file" id="imageInput" class="hidden">
+      </label>
+
+      <button onclick="sendMessage()">➤</button>
+
+    </div>
+  </div>
 
 </div>
 
